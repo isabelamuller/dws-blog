@@ -1,0 +1,75 @@
+.filters {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  padding: 16px;
+  border: 1px solid var(--color-neutrals-light);
+  border-radius: 16px;
+  background-color: var(--color-neutrals-lightest);
+}
+
+.title {
+  margin: 0 0 20px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.filterGroup h3 {
+  margin: 0 0 8px;
+  font-size: var(--font-size-body-large);
+}
+
+.filterGroup button {
+  padding: 12px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--color-neutrals-extra-light);
+  background: transparent;
+  color: var(--color-neutrals-darkest);
+  text-align: left;
+  cursor: pointer;
+}
+
+.applyButton {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--color-secondary-medium);
+  color: var(--color-neutrals-extra-lightest);
+  cursor: pointer;
+}
+
+.filterGroup button.selected {
+  background-color: var(--color-neutrals-extra-light);
+  color: var(--color-secondary-medium);
+  font-weight: 600;
+}
+
+.clearButton {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 20px;
+  border: 1px solid var(--color-secondary-medium);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-secondary-medium);
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .filters {
+    grid-column: 1 / span 3;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    height: fit-content;
+    margin-bottom: 0;
+  }
+}
+
