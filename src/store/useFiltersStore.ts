@@ -7,7 +7,7 @@ interface IFiltersStore {
   appliedAuthorIds: string[];
   toggleCategory: (id: string) => void;
   toggleAuthor: (id: string) => void;
-  applyFilters: () => void;
+  applyFilters?: () => void;
 }
 
 export const useFiltersStore = create<IFiltersStore>((set) => ({
