@@ -15,7 +15,7 @@ export const ArticleCard = ({ data }: IArticleCardProps) => {
           <span className={styles.dot}>•</span>
           <span>{getLastName(author.name)}</span>
         </div>
-        <span className={styles.title}>{title}</span>
+        <h3 className={styles.title}>{title}</h3>
         <span className={styles.description}>{content}</span>
       </div>
       <div className={styles.categories}>
