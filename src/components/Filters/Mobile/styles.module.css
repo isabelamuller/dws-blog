@@ -1,0 +1,135 @@
+.filters {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.filtersRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.filter {
+  width: 100%;
+  max-width: 110px;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  height: 48px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-secondary-medium);
+  border-radius: 999px;
+  background-color: white;
+  color: var(--color-secondary-medium);
+  font-size: var(--font-size-caption);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.trigger[aria-expanded="true"] {
+  background-color: #ffe7ee;
+}
+
+.trigger[aria-expanded="true"] img {
+  transform: rotate(180deg);
+}
+
+.trigger img {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  transition: transform 0.25s ease;
+}
+
+.dropdownWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.3s ease,
+    opacity 0.2s ease,
+    margin-top 0.3s ease;
+  margin-top: 0;
+}
+
+.dropdownWrapperOpen {
+  grid-template-rows: 1fr;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+.dropdownInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: var(--color-neutrals-lightest);
+  box-shadow: 0 4px 29.6px 0 rgba(91, 123, 193, 0.24);
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
+}
+
+.dropdownWrapperOpen .dropdown {
+  transform: translateY(0);
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 12px 8px;
+  border: 1px solid transparent;
+  border-bottom-color: var(--color-neutrals-extra-light);
+  background: transparent;
+  color: var(--color-neutrals-darkest);
+  font-size: var(--font-size-body-small);
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.dropdown button.selected {
+  border-color: var(--color-secondary-medium);
+  border-radius: 8px;
+  background-color: #ffe7ee;
+  color: var(--color-secondary-medium);
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .filters {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdownWrapper,
+  .dropdown,
+  .trigger img {
+    transition: none;
+  }
+}
