@@ -4,40 +4,50 @@ import { useParams } from "react-router-dom";
 import { getPostById, getPosts } from "../../api/requests";
 import type { IPostProps } from "../../api/types";
 
+import { ArticleCard } from "../../components/ArticleCard";
 import { BackButton } from "../../components/Back";
+import { PageContainer } from "../../components/Container";
+import { LoadingSkeleton } from "../../components/Skeleton";
+
 import { formatDate } from "../../utils/formatDate";
 import { getLatestPosts } from "../../utils/getLatestPosts";
 
 import styles from "./styles.module.css";
-import { ArticleCard } from "../../components/ArticleCard";
-import { PageContainer } from "../../components/Container";
+import { formatSlug } from "../../utils/formatSlug";
 
 export const ArticleView = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
   const [post, setPost] = useState<IPostProps>();
   const [latestPosts, setLatestPosts] = useState<IPostProps[]>([]);
 
   useEffect(() => {
-    if (!id) {
+    if (!slug) {
       return;
     }
 
     const fetchData = async () => {
-      const [postData, postsData] = await Promise.all([
-        getPostById(id),
-        getPosts(),
-      ]);
+      const postsData = await getPosts();
+
+      const matchedPost = postsData.find(
+        (post) => formatSlug(post.title) === slug,
+      );
+
+      if (!matchedPost) {
+        return;
+      }
+
+      const postData = await getPostById(matchedPost.id);
 
       setPost(postData);
-      setLatestPosts(getLatestPosts(postsData, id));
+      setLatestPosts(getLatestPosts(postsData, matchedPost.id));
     };
 
     fetchData();
-  }, [id]);
+  }, [slug]);
 
   if (!post) {
-    return;
+    return <LoadingSkeleton />;
   }
 
   return (
@@ -56,7 +66,7 @@ export const ArticleView = () => {
               <span>
                 Written by: <strong>{post.author.name}</strong>
               </span>
-              <span>{formatDate(post.createdAt)}</span>
+              <span className={styles.date}>{formatDate(post.createdAt)}</span>
             </div>
           </div>
           <img
@@ -72,7 +82,7 @@ export const ArticleView = () => {
             <h2>Latest articles</h2>
             <div className={styles.cards}>
               {latestPosts.map((latestPost) => (
-                <ArticleCard data={latestPost} />
+                <ArticleCard key={latestPost.id} data={latestPost} />
               ))}
             </div>
           </section>
