@@ -9,6 +9,8 @@ import { Filters } from "../../components/Filters";
 
 import styles from "./styles.module.css";
 import { useFiltersStore } from "../../store/useFiltersStore";
+import { LoadingSkeleton } from "../../components/Skeleton";
+import { formatSlug } from "../../utils/formatSlug";
 
 export const HomepageView = () => {
   const [posts, setPosts] = useState<IPostProps[]>([]);
@@ -44,7 +46,7 @@ export const HomepageView = () => {
   }, [posts, appliedCategoryIds, appliedAuthorIds]);
 
   if (!posts.length) {
-    return null;
+    return <LoadingSkeleton />;
   }
 
   return (
@@ -56,14 +58,22 @@ export const HomepageView = () => {
         <Filters />
         <section className={styles.postsSection}>
           <div className={styles.sort}>
-            <strong>Sort by:</strong>
-            <button>Newest first ↕</button>
+            <p>Sort by:</p>
+            <button className={styles.sortFilter}>
+              <span>Newest first</span>
+              <img
+                src="/icons/swap-icon.svg"
+                alt="Swap icon"
+                width={12}
+                height={15}
+              />
+            </button>
           </div>
           <div className={styles.postsGrid}>
             {filteredPosts.map((post) => (
               <Link
                 key={post.id}
-                to={`/posts/${post.id}`}
+                to={`/post/${formatSlug(post.title)}`}
                 className={styles.cardLink}
               >
                 <ArticleCard data={post} />

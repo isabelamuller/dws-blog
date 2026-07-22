@@ -1,18 +1,6 @@
 .page {
   min-height: 100vh;
   padding-block: 32px 80px;
-  background:
-    radial-gradient(
-      circle at 10% 70%,
-      rgba(0, 191, 193, 0.3),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(239, 76, 132, 0.25),
-      transparent 35%
-    ),
-    var(--color-neutrals-lightest);
 }
 
 .heading {
@@ -76,6 +64,7 @@
 
 .postsSection {
   grid-column: 1 / -1;
+  position: relative;
 }
 
 .sort {
@@ -84,13 +73,14 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+  position: absolute;
+  top: -70px;
+  right: 0;
 }
 
-.sort button {
-  border: 0;
-  background: transparent;
+.sort p {
   color: var(--color-neutrals-extra-dark);
-  cursor: pointer;
+  font-weight: 700;
 }
 
 .postsGrid {
@@ -132,4 +122,15 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
+}
+
+.sortFilter {
+  display: flex;
+  gap: 11px;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: var(--color-neutrals-extra-dark);
+  font-weight: 400;
+  font-size:  var(--font-size-body-large);
 }
