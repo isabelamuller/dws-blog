@@ -8,7 +8,12 @@ export const ArticleCard = ({ data }: IArticleCardProps) => {
 
   return (
     <div className={styles.card}>
-      <img src={thumbnail_url} alt="" className={styles.image} />
+      <img
+        loading="eager"
+        src={thumbnail_url}
+        alt=""
+        className={styles.image}
+      />
       <div className={styles.content}>
         <div className={styles.topContent}>
           <span className={styles.date}>{formatDate(createdAt)}</span>{" "}
