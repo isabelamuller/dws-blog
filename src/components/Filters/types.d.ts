@@ -1,4 +1,4 @@
-import type { IAuthorProps, ICategoryProps } from "../../api/types";
+import type { IAuthorProps, ICategoryProps } from "@/api/types";
 
 export interface IFiltersProps {
   categories: ICategoryProps[];

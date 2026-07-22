@@ -15,6 +15,10 @@
   object-fit: cover;
 }
 
+.latestImage {
+  height: 198px;
+}
+
 .content {
   display: flex;
   flex: 1;

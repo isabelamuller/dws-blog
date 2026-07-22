@@ -1,10 +1,11 @@
 .page {
   min-height: 100vh;
-    padding-top: 30px;
-    padding-bottom: 200px;
+  padding-top: 100px;
+  padding-bottom: 200px;
 }
 
 .article {
+  grid-column: 1 / -1;
   min-width: 0;
 }
 
@@ -90,16 +91,8 @@
 }
 
 @media (min-width: 1024px) {
-  .layout {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 24px;
-    padding: 48px 56px 80px;
-  }
-
-  .backArea {
-    grid-column: 1 / span 2;
-    margin-bottom: 0;
+  .page {
+    padding-top: 30px;
   }
 
   .article {

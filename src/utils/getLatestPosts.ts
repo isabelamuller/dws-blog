@@ -1,4 +1,4 @@
-import type { IPostProps } from "../api/types";
+import type { IPostProps } from "@/api/types";
 
 export const getLatestPosts = (
   posts: IPostProps[],

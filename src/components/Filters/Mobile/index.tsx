@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { getLastName } from "../../../utils/getAuthorLastName";
+import { getLastName } from "@/utils/getAuthorLastName";
 import type { IFiltersProps } from "../types";
 
 import styles from "./styles.module.css";

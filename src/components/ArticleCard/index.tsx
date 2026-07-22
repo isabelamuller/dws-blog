@@ -1,9 +1,12 @@
 import styles from "./styles.module.css";
-import { formatDate } from "../../utils/formatDate";
-import { getLastName } from "../../utils/getAuthorLastName";
+import { formatDate } from "@/utils/formatDate";
+import { getLastName } from "@/utils/getAuthorLastName";
 import type { IArticleCardProps } from "./types";
 
-export const ArticleCard = ({ data }: IArticleCardProps) => {
+export const ArticleCard = ({
+  data,
+  isLatestArticle = false,
+}: IArticleCardProps) => {
   const { title, author, createdAt, categories, thumbnail_url, content } = data;
 
   return (
@@ -12,7 +15,9 @@ export const ArticleCard = ({ data }: IArticleCardProps) => {
         loading="eager"
         src={thumbnail_url}
         alt=""
-        className={styles.image}
+        className={`${styles.image} ${
+          isLatestArticle ? styles.latestImage : ""
+        }`}
       />
       <div className={styles.content}>
         <div className={styles.topContent}>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { getAuthors, getCategories } from "../../api/requests";
-import type { IAuthorProps, ICategoryProps } from "../../api/types";
-import { useFiltersStore } from "../../store/useFiltersStore";
+import { getAuthors, getCategories } from "@/api/requests";
+import type { IAuthorProps, ICategoryProps } from "@/api/types";
+import { useFiltersStore } from "@/store/useFiltersStore";
 
 import { FiltersDesktop } from "./Desktop";
 import { FiltersMobile } from "./Mobile";

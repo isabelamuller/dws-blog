@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { getPostById, getPosts } from "../../api/requests";
-import type { IPostProps } from "../../api/types";
+import { getPostById, getPosts } from "@/api/requests";
+import type { IPostProps } from "@/api/types";
 
-import { ArticleCard } from "../../components/ArticleCard";
-import { BackButton } from "../../components/Back";
-import { PageContainer } from "../../components/Container";
-import { LoadingSkeleton } from "../../components/Skeleton";
+import { ArticleCard } from "@/components/ArticleCard";
+import { BackButton } from "@/components/Back";
+import { PageContainer } from "@/components/Container";
+import { LoadingSkeleton } from "@/components/Skeleton";
 
-import { formatDate } from "../../utils/formatDate";
-import { getLatestPosts } from "../../utils/getLatestPosts";
+import { formatDate } from "@/utils/formatDate";
+import { getLatestPosts } from "@/utils/getLatestPosts";
 
 import styles from "./styles.module.css";
-import { formatSlug } from "../../utils/formatSlug";
+import { formatSlug } from "@/utils/formatSlug";
 
 export const ArticleView = () => {
   const { slug } = useParams();
@@ -111,7 +111,7 @@ export const ArticleView = () => {
                   to={`/post/${formatSlug(latestPost.title)}`}
                   aria-label={`Read article: ${latestPost.title}`}
                 >
-                  <ArticleCard data={latestPost} />
+                  <ArticleCard data={latestPost} isLatestArticle />
                 </Link>
               ))}
             </div>

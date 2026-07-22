@@ -1,0 +1,44 @@
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  top: -70px;
+  right: 0;
+  margin-bottom: 24px;
+  justify-content: flex-end;
+}
+
+.option {
+    font-size: var(--font-size-body-large);
+}
+
+.sortFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--color-neutrals-extra-dark);
+  font-size: var(--font-size-body-small);
+  font-weight: 400;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.sortFilter img {
+  flex-shrink: 0;
+}
+
+.sortFilter:hover {
+  background-color: var(--color-accent-medium);
+  color: var(--color-neutrals-extra-light);
+}
+
+.sortFilter:hover img {
+  filter: brightness(0) invert(1);
+}

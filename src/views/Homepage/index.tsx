@@ -1,18 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { getPosts } from "../../api/requests";
-import type { IPostProps } from "../../api/types";
-import { ArticleCard } from "../../components/ArticleCard";
-import { PageContainer } from "../../components/Container";
-import { Filters } from "../../components/Filters";
-import { LoadingSkeleton } from "../../components/Skeleton";
-import { useFiltersStore } from "../../store/useFiltersStore";
-import { formatSlug } from "../../utils/formatSlug";
+import { getPosts } from "@/api/requests";
+import type { IPostProps } from "@/api/types";
+import { ArticleCard } from "@/components/ArticleCard";
+import { PageContainer } from "@/components/Container";
+import { Filters } from "@/components/Filters";
+import { LoadingSkeleton } from "@/components/Skeleton";
+import { useFiltersStore } from "@/store/useFiltersStore";
+import { formatSlug } from "@/utils/formatSlug";
+import { SortOrder, sortPosts } from "@/utils/sortPosts";
 import styles from "./styles.module.css";
+import { SortBy } from "@/components/SortBy";
 
 export const HomepageView = () => {
   const [posts, setPosts] = useState<IPostProps[]>([]);
+  const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.Newest);
 
   const appliedCategoryIds = useFiltersStore(
     (store) => store.appliedCategoryIds,
@@ -30,7 +33,7 @@ export const HomepageView = () => {
   }, []);
 
   const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
+    const filtered = posts.filter((post) => {
       const matchesCategory =
         appliedCategoryIds.length === 0 ||
         post.categories.some((category) =>
@@ -42,7 +45,9 @@ export const HomepageView = () => {
 
       return matchesCategory && matchesAuthor;
     });
-  }, [posts, appliedCategoryIds, appliedAuthorIds]);
+
+    return sortPosts(filtered, sortOrder);
+  }, [posts, appliedCategoryIds, appliedAuthorIds, sortOrder]);
 
   if (!posts.length) {
     return <LoadingSkeleton />;
@@ -55,26 +60,9 @@ export const HomepageView = () => {
           <h1>DWS blog</h1>
         </div>
         <Filters />
-        <section
-          className={styles.postsSection}
-          aria-labelledby="blog-posts-heading"
-        >
-          <div className={styles.sort}>
-            <p>Sort by:</p>
-            <button
-              type="button"
-              className={styles.sortFilter}
-              aria-label="Sort articles by newest first"
-            >
-              <span>Newest first</span>
-              <img
-                src="/icons/swap-icon.svg"
-                alt="Swap icon"
-                aria-hidden="true"
-                width={12}
-                height={15}
-              />
-            </button>
+        <section className={styles.postsSection}>
+          <div className={styles.sortWrapper}>
+            <SortBy value={sortOrder} onChange={setSortOrder} />
           </div>
           <div className={styles.postsGrid}>
             {filteredPosts.map((post) => (
