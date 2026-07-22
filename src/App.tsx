@@ -1,15 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ArticleView } from "./views/Article";
 import { HomepageView } from "./views/Homepage";
+import { Header } from "./components/Header";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomepageView />} />
-        <Route path="/posts/:id" element={<ArticleView />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomepageView />} />
+          <Route path="/post/:slug" element={<ArticleView />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

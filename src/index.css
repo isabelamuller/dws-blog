@@ -35,3 +35,86 @@ body {
   font-family: var(--font-family);
   color: var(--color-neutrals-darkest);
 }
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background-color: var(--color-neutrals-lightest);
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.app::before {
+  left: -300px;
+  top: 35%;
+  background: var(--color-accent-medium);
+  opacity: 0.2;
+  animation: accentFloat 18s ease-in-out infinite alternate;
+}
+
+.app::after {
+  right: -300px;
+  top: -100px;
+  background: var(--color-secondary-medium);
+  opacity: 0.16;
+  animation: secondaryFloat 22s ease-in-out infinite alternate;
+}
+
+@keyframes accentFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(80px, -50px) scale(1.1);
+  }
+}
+
+@keyframes secondaryFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-70px, 80px) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app::before,
+  .app::after {
+    animation: none;
+  }
+}
