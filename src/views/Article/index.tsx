@@ -22,6 +22,18 @@ export const ArticleView = () => {
   const [latestPosts, setLatestPosts] = useState<IPostProps[]>([]);
 
   useEffect(() => {
+    if (!post) {
+      return;
+    }
+
+    document.title = `${post.title} | DWS Blog`;
+
+    return () => {
+      document.title = "DWS Blog";
+    };
+  }, [post]);
+
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
