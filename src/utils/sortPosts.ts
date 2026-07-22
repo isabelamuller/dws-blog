@@ -17,11 +17,13 @@ export const sortPostsByOldest = (posts: IPostProps[]): IPostProps[] => {
   );
 };
 
+// the api currently returns identical createdAt and updatedAt values for all
+// posts, making chronological sorting impossible. the sorting functions above
+// represent the intended behavior.
+
 export const sortPosts = (
   posts: IPostProps[],
   order: SortOrder,
 ): IPostProps[] => {
-  return order === SortOrder.Newest
-    ? sortPostsByNewest(posts)
-    : sortPostsByOldest(posts);
+  return order === SortOrder.Newest ? [...posts] : [...posts].reverse();
 };
