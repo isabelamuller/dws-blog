@@ -34,6 +34,17 @@
   text-decoration: none;
 }
 
+.mobileSort {
+  grid-column: 1 / -1;
+  position: absolute;
+  top: 100px;
+  right: 16px;
+}
+
+.desktopSort {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .postsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -42,6 +53,17 @@
 }
 
 @media (min-width: 1024px) {
+.mobileSort {
+    display: none;
+  }
+
+  .desktopSort {
+    display: block;
+    position: absolute;
+    top: -70px;
+    right: 0;
+  }
+
   .page {
     padding-block: 40px 80px;
     margin-top: 0;
@@ -56,7 +78,7 @@
     display: block;
   }
 
-  .postsSection {
+ .postsSection {
     grid-column: 4 / span 9;
   }
 

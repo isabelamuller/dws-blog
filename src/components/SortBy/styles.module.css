@@ -1,16 +1,16 @@
 .sort {
   display: flex;
   align-items: center;
-  gap: 4px;
-  position: absolute;
-  top: -70px;
-  right: 0;
-  margin-bottom: 24px;
   justify-content: flex-end;
+  gap: 4px;
+}
+
+.sort strong {
+  display: none;
 }
 
 .option {
-    font-size: var(--font-size-body-large);
+  font-size: var(--font-size-body-small);
 }
 
 .sortFilter {
@@ -41,4 +41,14 @@
 
 .sortFilter:hover img {
   filter: brightness(0) invert(1);
+}
+
+@media (min-width: 1024px) {
+  .sort strong {
+    display: block;
+  }
+
+  .option {
+    font-size: var(--font-size-body-large);
+  }
 }
