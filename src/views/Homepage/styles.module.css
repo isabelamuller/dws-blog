@@ -1,0 +1,135 @@
+.page {
+  min-height: 100vh;
+  padding-block: 32px 80px;
+  background:
+    radial-gradient(
+      circle at 10% 70%,
+      rgba(0, 191, 193, 0.3),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(239, 76, 132, 0.25),
+      transparent 35%
+    ),
+    var(--color-neutrals-lightest);
+}
+
+.heading {
+  grid-column: 1 / -1;
+  margin-bottom: 24px;
+}
+
+.heading h1 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+  line-height: 1.3;
+  color: var(--color-primary-dark);
+}
+
+.filters {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  padding: 16px;
+  border: 1px solid var(--color-neutrals-light);
+  border-radius: 16px;
+  background-color: var(--color-neutrals-lightest);
+}
+
+.filters h2 {
+  margin: 0 0 20px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.filterGroup h3 {
+  margin: 0 0 8px;
+  font-size: var(--font-size-body-large);
+}
+
+.filterGroup button {
+  padding: 12px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--color-neutrals-extra-light);
+  background: transparent;
+  color: var(--color-neutrals-darkest);
+  text-align: left;
+  cursor: pointer;
+}
+
+.applyButton {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--color-secondary-medium);
+  color: white;
+  cursor: pointer;
+}
+
+.postsSection {
+  grid-column: 1 / -1;
+}
+
+.sort {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.sort button {
+  border: 0;
+  background: transparent;
+  color: var(--color-neutrals-extra-dark);
+  cursor: pointer;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cardLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .page {
+    padding-block: 40px 80px;
+  }
+
+  .heading {
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+  }
+
+  .filters {
+    grid-column: 1 / span 3;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    height: fit-content;
+    margin-bottom: 0;
+  }
+
+  .postsSection {
+    grid-column: 4 / span 9;
+  }
+
+  .postsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
