@@ -22,11 +22,11 @@ export const ArticleCard = ({ data }: IArticleCardProps) => {
         </div>
         <h3 className={styles.title}>{title}</h3>
         <span className={styles.description}>{content}</span>
-      </div>
-      <div className={styles.categories}>
-        {categories.map((category) => (
-          <span>{category.name}</span>
-        ))}
+        <div className={styles.categories}>
+          {categories.map((category) => (
+            <span className={styles.category}>{category.name}</span>
+          ))}
+        </div>
       </div>
     </div>
   );

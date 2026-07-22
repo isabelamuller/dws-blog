@@ -6,11 +6,10 @@ import type { IPostProps } from "../../api/types";
 import { ArticleCard } from "../../components/ArticleCard";
 import { PageContainer } from "../../components/Container";
 import { Filters } from "../../components/Filters";
-
-import styles from "./styles.module.css";
-import { useFiltersStore } from "../../store/useFiltersStore";
 import { LoadingSkeleton } from "../../components/Skeleton";
+import { useFiltersStore } from "../../store/useFiltersStore";
 import { formatSlug } from "../../utils/formatSlug";
+import styles from "./styles.module.css";
 
 export const HomepageView = () => {
   const [posts, setPosts] = useState<IPostProps[]>([]);
@@ -56,14 +55,22 @@ export const HomepageView = () => {
           <h1>DWS blog</h1>
         </div>
         <Filters />
-        <section className={styles.postsSection}>
+        <section
+          className={styles.postsSection}
+          aria-labelledby="blog-posts-heading"
+        >
           <div className={styles.sort}>
             <p>Sort by:</p>
-            <button className={styles.sortFilter}>
+            <button
+              type="button"
+              className={styles.sortFilter}
+              aria-label="Sort articles by newest first"
+            >
               <span>Newest first</span>
               <img
                 src="/icons/swap-icon.svg"
                 alt="Swap icon"
+                aria-hidden="true"
                 width={12}
                 height={15}
               />
@@ -75,6 +82,7 @@ export const HomepageView = () => {
                 key={post.id}
                 to={`/post/${formatSlug(post.title)}`}
                 className={styles.cardLink}
+                aria-label={`Read article: ${post.title}`}
               >
                 <ArticleCard data={post} />
               </Link>

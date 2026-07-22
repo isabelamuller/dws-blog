@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { getPostById, getPosts } from "../../api/requests";
 import type { IPostProps } from "../../api/types";
@@ -20,6 +20,13 @@ export const ArticleView = () => {
 
   const [post, setPost] = useState<IPostProps>();
   const [latestPosts, setLatestPosts] = useState<IPostProps[]>([]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [slug]);
 
   useEffect(() => {
     if (!slug) {
@@ -58,15 +65,19 @@ export const ArticleView = () => {
           <h1 className={styles.title}>{post.title}</h1>
           <div className={styles.author}>
             <img
+              loading="eager"
               className={styles.authorImage}
               src={post.author.profilePicture}
-              alt={post.author.name}
+              alt=""
+              aria-hidden="true"
             />
             <div className={styles.authorInfo}>
               <span>
                 Written by: <strong>{post.author.name}</strong>
               </span>
-              <span className={styles.date}>{formatDate(post.createdAt)}</span>
+              <time className={styles.date} dateTime={post.createdAt}>
+                {formatDate(post.createdAt)}
+              </time>
             </div>
           </div>
           <img
@@ -82,7 +93,14 @@ export const ArticleView = () => {
             <h2>Latest articles</h2>
             <div className={styles.cards}>
               {latestPosts.map((latestPost) => (
-                <ArticleCard key={latestPost.id} data={latestPost} />
+                <Link
+                  key={latestPost.id}
+                  className={styles.cardLink}
+                  to={`/post/${formatSlug(latestPost.title)}`}
+                  aria-label={`Read article: ${latestPost.title}`}
+                >
+                  <ArticleCard data={latestPost} />
+                </Link>
               ))}
             </div>
           </section>

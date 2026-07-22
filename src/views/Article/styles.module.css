@@ -23,6 +23,12 @@
   margin-bottom: 24px;
 }
 
+.cardLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .authorImage {
   width: 64px;
   height: 64px;
