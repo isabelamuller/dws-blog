@@ -22,16 +22,21 @@ export const FiltersMobile = ({
   const [activeFilter, setActiveFilter] = useState<ActiveFilter>(
     ActiveFilter.None,
   );
+  const [displayedFilter, setDisplayedFilter] = useState<ActiveFilter>(
+    ActiveFilter.CategoryFilter,
+  );
 
-  const toggleFilter = (filter: ActiveFilter) => {
-    setActiveFilter((current) =>
-      current === filter ? ActiveFilter.None : filter,
-    );
-  };
+  function toggleFilter(filter: ActiveFilter) {
+    const nextFilter = activeFilter === filter ? ActiveFilter.None : filter;
+    if (nextFilter !== ActiveFilter.None) {
+      setDisplayedFilter(nextFilter);
+    }
+    setActiveFilter(nextFilter);
+  }
 
-  const isCategoryOpen = activeFilter === "category";
-  const isAuthorOpen = activeFilter === "author";
-  const isOpen = activeFilter !== null;
+  const isCategoryOpen = activeFilter === ActiveFilter.CategoryFilter;
+  const isAuthorOpen = activeFilter === ActiveFilter.AuthorFilter;
+  const isOpen = activeFilter !== ActiveFilter.None;
 
   return (
     <div className={styles.filters}>
@@ -77,16 +82,16 @@ export const FiltersMobile = ({
         className={`${styles.dropdownWrapper} ${
           isOpen ? styles.dropdownWrapperOpen : ""
         }`}
+        aria-hidden={!isOpen}
       >
         <div className={styles.dropdownInner}>
-          <div className={styles.dropdown}>
-            {isCategoryOpen &&
-              categories.map((category) => {
+          {displayedFilter === ActiveFilter.CategoryFilter && (
+            <div id="category-filter-options" className={styles.dropdown}>
+              {categories.map((category) => {
                 const isSelected = selectedCategoryIds.includes(category.id);
                 return (
                   <button
                     key={category.id}
-                    id="category-filter-options"
                     type="button"
                     aria-pressed={isSelected}
                     className={isSelected ? styles.selected : ""}
@@ -96,13 +101,15 @@ export const FiltersMobile = ({
                   </button>
                 );
               })}
-            {isAuthorOpen &&
-              authors.map((author) => {
+            </div>
+          )}
+          {displayedFilter === ActiveFilter.AuthorFilter && (
+            <div id="author-filter-options" className={styles.dropdown}>
+              {authors.map((author) => {
                 const isSelected = selectedAuthorIds.includes(author.id);
                 return (
                   <button
                     key={author.id}
-                    id="author-filter-options"
                     type="button"
                     aria-pressed={isSelected}
                     className={isSelected ? styles.selected : ""}
@@ -112,7 +119,8 @@ export const FiltersMobile = ({
                   </button>
                 );
               })}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
