@@ -24,17 +24,23 @@ export const Filters = () => {
         getCategories(),
         getAuthors(),
       ]);
-
       setCategories(categoriesData);
       setAuthors(authorsData);
     };
-
     fetchFilters();
   }, []);
 
   return (
     <aside className={styles.filters}>
-      <h2 className={styles.title}>☷ Filters</h2>
+      <span className={styles.title}>
+        <img
+          src="/icons/filters-icon.svg"
+          alt="Filters icon"
+          width={17}
+          height={17}
+        />
+        Filters
+      </span>
       <div className={styles.filterGroup}>
         <h3>Category</h3>
         {categories.map((category) => {
