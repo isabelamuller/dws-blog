@@ -17,7 +17,7 @@ export const Filters = () => {
   const selectedAuthorIds = useFiltersStore((store) => store.selectedAuthorIds);
   const toggleCategory = useFiltersStore((store) => store.toggleCategory);
   const toggleAuthor = useFiltersStore((store) => store.toggleAuthor);
-  const applyFilters = useFiltersStore((store) => store.applyFilters); // desenvolver dps
+  // const applyFilters = useFiltersStore((store) => store.applyFilters); // desenvolver dps
 
   useEffect(() => {
     const fetchFilters = async () => {
