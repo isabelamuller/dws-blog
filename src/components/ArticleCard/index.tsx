@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import { formatDate } from "@/utils/formatDate";
-import { getLastName } from "@/utils/getAuthorLastName";
+import { getAuthorLastName } from "@/utils/getAuthorLastName";
 import type { IArticleCardProps } from "./types";
 
 export const ArticleCard = ({
@@ -23,7 +23,7 @@ export const ArticleCard = ({
         <div className={styles.topContent}>
           <span className={styles.date}>{formatDate(createdAt)}</span>{" "}
           <span className={styles.dot}>•</span>
-          <span>{getLastName(author.name)}</span>
+          <span>{getAuthorLastName(author.name)}</span>
         </div>
         <h3 className={styles.title}>{title}</h3>
         <span className={styles.description}>{content}</span>

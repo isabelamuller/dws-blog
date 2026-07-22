@@ -1,4 +1,4 @@
-import { getLastName } from "@/utils/getAuthorLastName";
+import { getAuthorLastName } from "@/utils/getAuthorLastName";
 import type { IFiltersProps } from "../types";
 
 import styles from "./styles.module.css";
@@ -52,7 +52,7 @@ export const FiltersDesktop = ({
               className={isSelected ? styles.selected : ""}
               onClick={() => onToggleAuthor(author.id)}
             >
-              {getLastName(author.name)}
+              {getAuthorLastName(author.name)}
             </button>
           );
         })}
