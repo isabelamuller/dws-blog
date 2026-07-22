@@ -1,0 +1,37 @@
+:root {
+  /* Colors */
+  --color-neutrals-lightest: #f0f0f2;
+  --color-neutrals-extra-light: #e0e2e6;
+  --color-neutrals-light: #c0c2c8;
+  --color-neutrals-medium: #9ea0a5;
+  --color-neutrals-extra-dark: #5e5f63;
+  --color-neutrals-darkest: #202122;
+  --color-primary-light: #0b0e3a;
+  --color-primary-medium: #060725;
+  --color-primary-dark: #020318;
+  --color-secondary-light: #ef4c84;
+  --color-secondary-medium: #d31450;
+  --color-secondary-dark: #8c1038;
+  --color-accent-light: #00bfc1;
+  --color-accent-medium: #009598;
+  --color-accent-dark: #006c6e;
+
+  /* Typography */
+  --font-family: "Open Sans", sans-serif;
+  --font-size-h1: 3.5rem;
+  --font-size-h2: 2.25rem;
+  --font-size-h3: 1.25rem;
+  --font-size-body-large: 1rem;
+  --font-size-body-small: 0.875rem;
+  --font-size-caption: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--color-neutrals-darkest);
+}
