@@ -15,10 +15,6 @@
   object-fit: cover;
 }
 
-.latestImage {
-  height: 198px;
-}
-
 .content {
   display: flex;
   flex: 1;
@@ -76,4 +72,10 @@
   font-size: 12px;
   font-weight: 600;
   line-height: 1;
+}
+
+@media (min-width: 1024px) {
+.latestImage {
+  height: 198px;
+}
 }
