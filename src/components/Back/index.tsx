@@ -6,7 +6,8 @@ export const BackButton = () => {
   return (
     <aside className={styles.backArea}>
       <button className={styles.backButton} onClick={() => navigate(-1)}>
-        ← Back
+        <img src="/icons/back-icon.svg" width={15} height={15} />
+        Back
       </button>
     </aside>
   );
