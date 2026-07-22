@@ -37,3 +37,32 @@ Clone the repository and install the dependencies:
 
 ```bash
 npm install
+```
+
+### Running the application
+
+Start the development server:
+
+```bash
+npm start
+```
+
+The application will be available at the local URL displayed in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+## Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+## Notes
+
+The API currently returns identical `createdAt` and `updatedAt` values for all blog posts.
+
+Because there is no reliable chronological data available, the API response order is treated as newest-first and reversed when sorting by oldest-first.
