@@ -1,17 +1,14 @@
 .mobileFilters {
   grid-column: 1 / -1;
-
   display: flex;
   align-items: flex-start;
   gap: 16px;
-
   width: 100%;
   margin-bottom: 32px;
 }
 
 .mobileFilter {
   position: relative;
-
   flex: 1;
   min-width: 0;
 }
@@ -21,22 +18,16 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-
   width: 100%;
   height: 48px;
   padding: 0 16px;
-
   border: 1px solid var(--color-secondary-medium);
   border-radius: 999px;
-
   background-color: transparent;
   color: var(--color-secondary-medium);
-
   font-size: var(--font-size-body-large);
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -50,14 +41,12 @@
 
 .dropdownTrigger span {
   overflow: hidden;
-
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .dropdownTrigger svg {
   flex-shrink: 0;
-
   width: 20px;
   height: 20px;
 }
@@ -69,25 +58,17 @@
 .dropdown {
   position: absolute;
   z-index: 20;
-
   top: calc(100% + 8px);
   left: 0;
-
   display: flex;
   flex-direction: column;
-
   width: min(280px, calc(100vw - 32px));
   padding: 16px;
-
   border-radius: 16px;
-
   background-color: var(--color-neutrals-lightest);
-
   box-shadow: 0 4px 29.6px 0 rgba(91, 123, 193, 0.24);
 }
 
-/* Faz o dropdown de Author abrir para a esquerda,
-   evitando sair da viewport */
 .mobileFilter:last-child .dropdown {
   right: 0;
   left: auto;
@@ -96,21 +77,15 @@
 .dropdown button {
   width: 100%;
   padding: 12px 8px;
-
   border: 1px solid transparent;
   border-bottom-color: var(--color-neutrals-extra-light);
-
   background: transparent;
   color: var(--color-neutrals-darkest);
-
   font-size: var(--font-size-body-small);
   font-weight: 400;
   line-height: 1.5;
-
   text-align: left;
-
   cursor: pointer;
-
   transition:
     color 0.2s ease,
     background-color 0.2s ease,
@@ -120,7 +95,6 @@
 .dropdown button:hover {
   border-bottom-color: var(--color-accent-medium);
   border-radius: 8px 8px 0 0;
-
   background-color: #e4eef0;
   color: var(--color-accent-medium);
 }
@@ -128,16 +102,10 @@
 .dropdown button.optionSelected {
   border-color: var(--color-accent-medium);
   border-radius: 8px;
-
   background-color: #e4eef0;
   color: var(--color-accent-medium);
-
   font-weight: 600;
 }
-
-/* =========================
-   DESKTOP FILTER PANEL
-   ========================= */
 
 .filters {
   display: none;
@@ -147,9 +115,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-
   margin: 0 0 20px;
-
   font-size: 24px;
   font-weight: 400;
 }
@@ -157,36 +123,27 @@
 .filterGroup {
   display: flex;
   flex-direction: column;
-
   margin-bottom: 24px;
 }
 
 .filterGroup h3 {
   margin: 0 0 8px;
-
   color: var(--color-primary-dark);
-
   font-size: var(--font-size-body-large);
   font-weight: 600;
 }
 
 .filterGroup button {
   padding: 12px 8px;
-
   border: 1px solid transparent;
   border-bottom-color: var(--color-neutrals-extra-light);
-
   background: transparent;
   color: var(--color-neutrals-darkest);
-
   font-size: var(--font-size-body-small);
   font-weight: 400;
   line-height: 1.5;
-
   text-align: left;
-
   cursor: pointer;
-
   transition:
     color 0.2s ease,
     background-color 0.2s ease,
@@ -196,34 +153,26 @@
 .filterGroup button:hover {
   border-bottom: 1px solid var(--color-accent-medium);
   border-radius: 8px 8px 0 0;
-
   background-color: #e4eef0;
 }
 
 .filterGroup button.selected {
   border-color: var(--color-accent-medium);
   border-radius: 8px;
-
   background-color: #e4eef0;
   color: var(--color-accent-medium);
-
   font-weight: 600;
 }
 
 .applyButton {
   width: 100%;
-
   margin-top: auto;
   padding: 12px 20px;
-
   border: 0;
   border-radius: 999px;
-
   background-color: var(--color-secondary-medium);
   color: var(--color-neutrals-lightest);
-
   cursor: pointer;
-
   transition: background-color 0.2s ease;
 }
 
@@ -239,24 +188,17 @@
 
   .filters {
     grid-column: 1 / span 3;
-
     position: sticky;
     top: 24px;
-
     display: flex;
     flex-direction: column;
-
     align-self: start;
     height: fit-content;
-
     margin-bottom: 0;
     padding: 15px;
-
     border: 0;
     border-radius: 16px;
-
     background-color: var(--color-neutrals-lightest);
-
     box-shadow: 0 4px 29.6px 0 rgba(91, 123, 193, 0.24);
   }
 }

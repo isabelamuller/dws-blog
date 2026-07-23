@@ -68,6 +68,17 @@ export const HomepageView = () => {
             <SortBy value={sortOrder} onChange={setSortOrder} />
           </div>
           <div className={styles.postsGrid}>
+            {!filteredPosts.length && (
+              <span className={styles.notFound}>
+                <img
+                  src="/icons/not-found-icon.png"
+                  alt="Not Found Icon"
+                  width={80}
+                  height={80}
+                />
+                No posts found. Try changing your filters.
+              </span>
+            )}
             {filteredPosts.map((post) => (
               <Link
                 key={post.id}
