@@ -9,11 +9,11 @@ import styles from "./styles.module.css";
 export const SearchBar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [categories, setCategories] = useState<ICategoryProps[]>([]);
+  const [showSearchError, setShowSearchError] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
       const data = await getCategories();
-
       setCategories(data);
     };
 
@@ -27,6 +27,7 @@ export const SearchBar = () => {
           type="search"
           placeholder="Search"
           aria-label="Search blog posts"
+          onChange={() => setShowSearchError(true)}
         />
         <button
           type="button"
@@ -42,6 +43,11 @@ export const SearchBar = () => {
             aria-hidden="true"
           />
         </button>
+        {showSearchError && (
+          <span className={styles.searchBarError}>
+            This is not a functional search bar. Sorry!
+          </span>
+        )}
       </div>
       {createPortal(
         <div

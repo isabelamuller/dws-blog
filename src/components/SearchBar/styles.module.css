@@ -7,6 +7,7 @@
   border-radius: 50%;
   background-color: transparent;
   box-shadow: none;
+  position: relative;
 }
 
 .searchBar input {
@@ -127,6 +128,16 @@
   color: var(--color-neutrals-darkest);
   font-size: var(--font-size-caption);
   line-height: 1.3;
+}
+
+.searchBarError {
+  display: block;
+  color: var(--color-secondary-medium);
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  font-size: 10px;
 }
 
 @media (min-width: 1024px) {
