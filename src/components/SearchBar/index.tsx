@@ -7,9 +7,9 @@ import type { ICategoryProps } from "@/api/types";
 import styles from "./styles.module.css";
 
 export const SearchBar = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const [showSearchError, setShowSearchError] = useState<boolean>(false);
   const [categories, setCategories] = useState<ICategoryProps[]>([]);
-  const [showSearchError, setShowSearchError] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
