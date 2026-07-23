@@ -1,0 +1,51 @@
+.wrapper {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  width: 55px;
+  height: 55px;
+  padding: 20px;
+  border: 0;
+  border-radius: 100%;
+  background-color: var(--color-secondary-medium);
+  cursor: pointer;
+  animation: slideInBottomMobile 0.2s ease-out forwards;
+}
+
+.topIcon {
+  filter: brightness(10);
+  transform: rotate(90deg);
+}
+
+@keyframes slideInBottomMobile {
+  from {
+    transform: translate(-50%, 150%);
+  }
+
+  to {
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes slideInRightDesktop {
+  from {
+    transform: translateX(150%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    left: auto;
+    right: 10px;
+    animation: slideInRightDesktop 0.2s ease-out forwards;
+    transition: background-color 0.2s ease;
+  }
+
+  .wrapper:hover {
+    background-color: var(--color-secondary-dark);
+  }
+}
