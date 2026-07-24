@@ -34,11 +34,18 @@
   text-decoration: none;
 }
 
-.mobileSort {
+.mobileControls {
   grid-column: span 4 / span 4;
-  position: absolute;
-  top: 100px;
-  right: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mobileSort {
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .desktopSort {
@@ -61,7 +68,11 @@
 }
 
 @media (min-width: 1024px) {
-.mobileSort {
+  .mobileControls {
+    display: contents;
+  }
+
+  .mobileSort {
     display: none;
   }
 

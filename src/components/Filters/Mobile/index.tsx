@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import { getAuthorLastName } from "@/utils/getAuthorLastName";
 import type { IFiltersProps } from "../types";
-
 import styles from "./styles.module.css";
 
 enum ActiveFilter {
@@ -26,6 +25,14 @@ export const FiltersMobile = ({
     ActiveFilter.CategoryFilter,
   );
 
+  const selectedCategories = categories
+    .filter((category) => selectedCategoryIds.includes(category.id))
+    .map((category) => category.name);
+
+  const selectedAuthors = authors
+    .filter((author) => selectedAuthorIds.includes(author.id))
+    .map((author) => getAuthorLastName(author.name));
+
   function toggleFilter(filter: ActiveFilter) {
     const nextFilter = activeFilter === filter ? ActiveFilter.None : filter;
     if (nextFilter !== ActiveFilter.None) {
@@ -42,40 +49,64 @@ export const FiltersMobile = ({
     <div className={styles.filters}>
       <div className={styles.filtersRow}>
         <div className={styles.filter}>
-          <button
-            type="button"
-            className={styles.trigger}
-            aria-expanded={isCategoryOpen}
-            aria-controls="category-filter-options"
-            onClick={() => toggleFilter(ActiveFilter.CategoryFilter)}
-          >
-            <span>Category</span>
-            <img
-              src="/icons/chevron.svg"
-              alt=""
-              aria-hidden="true"
-              width={15}
-              height={15}
-            />
-          </button>
+          {selectedCategories.length ? (
+            <div className={styles.selectedTrigger}>
+              <button
+                type="button"
+                className={styles.selectedLabel}
+                onClick={() => toggleFilter(ActiveFilter.CategoryFilter)}
+              >
+                {selectedCategories.join(", ")}
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={styles.trigger}
+              aria-expanded={isCategoryOpen}
+              aria-controls="category-filter-options"
+              onClick={() => toggleFilter(ActiveFilter.CategoryFilter)}
+            >
+              <span>Category</span>
+              <img
+                src="/icons/chevron.svg"
+                alt=""
+                aria-hidden="true"
+                width={15}
+                height={15}
+              />
+            </button>
+          )}
         </div>
         <div className={styles.filter}>
-          <button
-            type="button"
-            className={styles.trigger}
-            aria-expanded={isAuthorOpen}
-            aria-controls="author-filter-options"
-            onClick={() => toggleFilter(ActiveFilter.AuthorFilter)}
-          >
-            <span>Author</span>
-            <img
-              src="/icons/chevron.svg"
-              alt=""
-              aria-hidden="true"
-              width={15}
-              height={15}
-            />
-          </button>
+          {selectedAuthors.length ? (
+            <div className={styles.selectedTrigger}>
+              <button
+                type="button"
+                className={styles.selectedLabel}
+                onClick={() => toggleFilter(ActiveFilter.AuthorFilter)}
+              >
+                {selectedAuthors.join(", ")}
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={styles.trigger}
+              aria-expanded={isAuthorOpen}
+              aria-controls="author-filter-options"
+              onClick={() => toggleFilter(ActiveFilter.AuthorFilter)}
+            >
+              <span>Author</span>
+              <img
+                src="/icons/chevron.svg"
+                alt=""
+                aria-hidden="true"
+                width={15}
+                height={15}
+              />
+            </button>
+          )}
         </div>
       </div>
       <div

@@ -1,20 +1,30 @@
 import { create } from "zustand";
 
-interface IFiltersStore {
+export type FiltersStoreState = {
   selectedCategoryIds: string[];
   selectedAuthorIds: string[];
   appliedCategoryIds: string[];
   appliedAuthorIds: string[];
+};
+
+type FiltersStoreActions = {
   toggleCategory: (id: string) => void;
   toggleAuthor: (id: string) => void;
-  applyFilters?: () => void;
-}
+  applyFilters: () => void;
+};
 
-export const useFiltersStore = create<IFiltersStore>((set) => ({
+type FiltersStore = FiltersStoreState & FiltersStoreActions;
+
+const filtersInitialState: FiltersStoreState = {
   selectedCategoryIds: [],
   selectedAuthorIds: [],
   appliedCategoryIds: [],
   appliedAuthorIds: [],
+};
+
+export const useFiltersStore = create<FiltersStore>((set) => ({
+  ...filtersInitialState,
+
   toggleCategory: (id) =>
     set((state) => ({
       selectedCategoryIds: state.selectedCategoryIds.includes(id)

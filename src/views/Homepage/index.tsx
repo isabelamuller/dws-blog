@@ -59,9 +59,11 @@ export const HomepageView = () => {
         <div className={styles.heading}>
           <h1>DWS blog</h1>
         </div>
-        <Filters />
-        <div className={styles.mobileSort}>
-          <SortBy value={sortOrder} onChange={setSortOrder} />
+        <div className={styles.mobileControls}>
+          <Filters />
+          <div className={styles.mobileSort}>
+            <SortBy value={sortOrder} onChange={setSortOrder} />
+          </div>
         </div>
         <section className={styles.postsSection}>
           <div className={styles.desktopSort}>
